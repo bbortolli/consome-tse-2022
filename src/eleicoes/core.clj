@@ -19,3 +19,21 @@
    :pvap :percentual-votos})
 
 (def chaves-usadas [:nome :numero :partido :qtd-votos :percentual-votos])
+
+;; utils
+(defn decode-keyword [s]
+  (keyword (str/replace s \_ \-)))
+
+(defn encode-keyword [kw]
+  (str/replace (name kw) \- \_))
+
+(def mapper-key-underscore
+  (json/object-mapper
+    {:decode-key-fn decode-keyword
+     :encode-key-fn encode-keyword}))
+
+(defn json->str [obj]
+  (json/write-value-as-string obj mapper-key-underscore))
+
+(defn str->json [s]
+  (json/read-value s mapper-key-underscore))
