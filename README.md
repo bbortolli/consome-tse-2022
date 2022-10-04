@@ -18,3 +18,6 @@ Na pasta raiz do projeto
 
 ### Powershell
 ```docker run -it --name clj -v ${PWD}/work -w /work clojure:latest lein run```
+
+### Preview
+![Ilustração do resultado da consulta](resources/preview.png "Ilustração da saida do programa.")
